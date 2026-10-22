@@ -134,129 +134,124 @@ export const ClubsPage: React.FC<{ onGoToLogin: () => void }> = ({ onGoToLogin }
   ];
 
   return (
-    <div className="space-y-8 animate-fadeIn pb-16">
+    <div className="space-y-6 animate-fadeIn pb-16">
       {/* Header */}
-      <div className="space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950 border border-teal-800 text-teal-300 text-xs font-semibold">
-          <Users className="w-3.5 h-3.5 text-teal-400" />
+      <div className="space-y-1.5">
+        <div className="inline-flex items-center gap-1.5 text-xs text-[#787774] font-medium">
+          <Users className="w-3.5 h-3.5 text-[#37352F]" />
           <span>KIET Campus Student Societies & Clubs</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h1 className="text-2xl font-bold text-[#37352F]">
           College Clubs Directory
         </h1>
-        <p className="text-sm text-slate-300 max-w-3xl leading-relaxed">
+        <p className="text-xs text-[#787774] max-w-2xl leading-relaxed">
           Explore technical guilds, coding societies, creative media, debating cells, dramatics, fashion, and college sports. Connect with student coordinators and peer mentors.
         </p>
       </div>
 
       {feedbackMessage && (
-        <div className="p-4 rounded-xl bg-teal-950/60 border border-teal-800 text-teal-200 text-xs flex items-center justify-between">
+        <div className="p-3 rounded-md bg-[#EDF3EC] border border-[#D3E5D2] text-[#2B6E38] text-xs flex items-center justify-between">
           <span>{feedbackMessage}</span>
-          <button onClick={() => setFeedbackMessage(null)} className="text-teal-400 font-bold ml-4">
+          <button onClick={() => setFeedbackMessage(null)} className="text-[#2B6E38] font-bold ml-4">
             ×
           </button>
         </div>
       )}
 
       {/* Filter and Search Bar */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 shadow-lg space-y-4">
+      <div className="bg-white border border-[#E9E9E7] rounded-lg p-3.5 shadow-xs space-y-3">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             fetchClubs();
           }}
-          className="flex flex-col sm:flex-row gap-3"
+          className="flex flex-col sm:flex-row gap-2"
         >
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-3.5 h-3.5 text-[#9B9A97] absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by club name (GDG, NextGen, CPByte, C-Cell...), domain (DSA, ML, UI/UX), or activities..."
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-teal-500"
+              className="w-full bg-[#FAF9F6] border border-[#E9E9E7] rounded-md pl-9 pr-3 py-1.5 text-xs text-[#37352F] placeholder-[#9B9A97] focus:outline-none focus:border-[#2383E2] focus:bg-white transition-colors"
             />
           </div>
           <button
             type="submit"
-            className="px-5 py-2.5 bg-teal-600 hover:bg-teal-500 text-white rounded-xl text-xs font-semibold shadow-md shadow-teal-700/20 transition-all flex items-center justify-center gap-2"
+            className="px-3.5 py-1.5 bg-[#2F2E2A] hover:bg-[#191918] text-white rounded-md text-xs font-medium transition-colors flex items-center justify-center gap-1.5"
           >
             <Search className="w-3.5 h-3.5" />
-            <span>Search Clubs</span>
+            <span>Search</span>
           </button>
         </form>
 
         {/* Activity Status Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800 text-xs">
-          <span className="text-slate-400 font-medium mr-1 flex items-center gap-1 text-[11px]">
-            <Activity className="w-3 h-3 text-teal-400" />
+        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#E9E9E7] text-xs">
+          <span className="text-[#787774] font-medium mr-1 flex items-center gap-1 text-[11px]">
+            <Activity className="w-3 h-3 text-[#9B9A97]" />
             Status:
           </span>
           <button
             onClick={() => setStatusFilter('All')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold border transition-all ${
+            className={`px-2.5 py-0.5 rounded text-[11px] font-medium border transition-colors ${
               statusFilter === 'All'
-                ? 'bg-slate-700 text-white border-slate-600'
-                : 'bg-slate-800/60 text-slate-400 border-slate-700 hover:text-white'
+                ? 'bg-[#2F2E2A] text-white border-[#2F2E2A]'
+                : 'bg-[#F1F1EF] text-[#787774] border-[#E9E9E7] hover:text-[#37352F] hover:bg-[#EAE9E6]'
             }`}
           >
             All Statuses
           </button>
           <button
             onClick={() => setStatusFilter('hot')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold border transition-all flex items-center gap-1 ${
+            className={`px-2.5 py-0.5 rounded text-[11px] font-medium border transition-colors flex items-center gap-1 ${
               statusFilter === 'hot'
-                ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm'
-                : 'bg-slate-800/60 text-slate-400 border-slate-700 hover:text-amber-300'
+                ? 'bg-[#FBEDD6] text-[#8F4800] border-[#F5D8A8] font-semibold'
+                : 'bg-[#F1F1EF] text-[#787774] border-[#E9E9E7] hover:text-[#37352F]'
             }`}
           >
-            <Flame className="w-3 h-3 text-amber-400" />
-            <span>Hot & Trending Clubs</span>
+            <Flame className="w-3 h-3 text-[#8F4800]" />
+            <span>Hot & Trending</span>
           </button>
           <button
             onClick={() => setStatusFilter('active')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold border transition-all flex items-center gap-1 ${
+            className={`px-2.5 py-0.5 rounded text-[11px] font-medium border transition-colors flex items-center gap-1 ${
               statusFilter === 'active'
-                ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50 shadow-sm'
-                : 'bg-slate-800/60 text-slate-400 border-slate-700 hover:text-emerald-300'
+                ? 'bg-[#EDF3EC] text-[#2B6E38] border-[#D3E5D2] font-semibold'
+                : 'bg-[#F1F1EF] text-[#787774] border-[#E9E9E7] hover:text-[#37352F]'
             }`}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span>Active Campus Guilds</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span>Active Guilds</span>
           </button>
           <button
             onClick={() => setStatusFilter('occasional')}
-            className={`px-3 py-1 rounded-lg text-[11px] font-semibold border transition-all ${
+            className={`px-2.5 py-0.5 rounded text-[11px] font-medium border transition-colors ${
               statusFilter === 'occasional'
-                ? 'bg-purple-500/20 text-purple-300 border-purple-500/50 shadow-sm'
-                : 'bg-slate-800/60 text-slate-400 border-slate-700 hover:text-purple-300'
+                ? 'bg-[#F6F3F9] text-[#6941C6] border-[#E4DCF5] font-semibold'
+                : 'bg-[#F1F1EF] text-[#787774] border-[#E9E9E7] hover:text-[#37352F]'
             }`}
           >
-            Occasional / Periodic Sprints
+            Periodic Sprints
           </button>
         </div>
 
         {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-800 text-xs">
-          <span className="text-slate-400 font-medium mr-1 flex items-center gap-1 text-[11px]">
-            <Filter className="w-3 h-3 text-teal-400" />
+        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#E9E9E7] text-xs">
+          <span className="text-[#787774] font-medium mr-1 flex items-center gap-1 text-[11px]">
+            <Filter className="w-3 h-3 text-[#9B9A97]" />
             Domain:
           </span>
           {categoriesList.map((cat) => {
-            const isHotCat = cat === '🔥 Hot Clubs';
             const isActive = category === cat;
             return (
               <button
                 key={cat}
                 onClick={() => setCategory(cat)}
-                className={`px-3 py-1 rounded-lg text-[11px] font-medium border transition-colors ${
+                className={`px-2.5 py-0.5 rounded text-[11px] font-medium border transition-colors ${
                   isActive
-                    ? isHotCat
-                      ? 'bg-gradient-to-r from-amber-600 to-rose-600 text-white border-amber-500 shadow-md'
-                      : 'bg-teal-600 text-white border-teal-500 shadow-sm'
-                    : isHotCat
-                    ? 'bg-amber-950/40 text-amber-300 border-amber-800 hover:bg-amber-900/40'
-                    : 'bg-slate-800/80 text-slate-300 border-slate-700 hover:bg-slate-800 hover:text-white'
+                    ? 'bg-[#2F2E2A] text-white border-[#2F2E2A]'
+                    : 'bg-[#F1F1EF] text-[#787774] border-[#E9E9E7] hover:bg-[#EAE9E6] hover:text-[#37352F]'
                 }`}
               >
                 {cat}
@@ -268,27 +263,26 @@ export const ClubsPage: React.FC<{ onGoToLogin: () => void }> = ({ onGoToLogin }
 
       {/* Clubs Grid */}
       {loading ? (
-        <div className="text-center py-16 text-slate-400 text-xs flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
-          <span>Loading KIET student societies...</span>
+        <div className="text-center py-16 text-[#787774] text-xs">
+          Loading student societies...
         </div>
       ) : clubs.length === 0 ? (
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-xs text-slate-400">
-          <Users className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-          <p className="text-sm text-slate-300 font-semibold">No clubs found matching your search filter.</p>
+        <div className="bg-white border border-[#E9E9E7] rounded-lg p-10 text-center text-xs text-[#787774]">
+          <Users className="w-8 h-8 text-[#9B9A97] mx-auto mb-2" />
+          <p className="text-sm text-[#37352F] font-semibold">No clubs found matching your search filter.</p>
           <button
             onClick={() => {
               setSearch('');
               setCategory('All');
               setStatusFilter('All');
             }}
-            className="mt-3 text-teal-400 hover:underline font-semibold"
+            className="mt-2 text-[#37352F] hover:underline font-medium"
           >
-            Reset All Filters
+            Reset all filters
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {clubs.map((club) => {
             const isHot = Boolean(club.is_hot) || club.activity_status === 'hot';
             const isOccasional = club.activity_status === 'occasional';
@@ -296,84 +290,74 @@ export const ClubsPage: React.FC<{ onGoToLogin: () => void }> = ({ onGoToLogin }
             return (
               <div
                 key={club.id}
-                className={`rounded-2xl p-6 shadow-md transition-all flex flex-col justify-between ${
-                  isHot
-                    ? 'bg-gradient-to-b from-slate-900 via-slate-900 to-amber-950/20 border border-amber-500/40 hover:border-amber-400/80 shadow-amber-950/20'
-                    : 'bg-slate-900 border border-slate-800 hover:border-slate-700'
-                }`}
+                className="bg-white border border-[#E9E9E7] rounded-lg p-5 shadow-xs hover:border-[#D3D1CB] transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-start justify-between gap-3 mb-4">
-                    <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                        isHot
-                          ? 'bg-amber-500/10 border border-amber-500/30'
-                          : 'bg-slate-800 border border-slate-700'
-                      }`}
-                    >
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-md bg-[#F1F1EF] border border-[#E9E9E7] flex items-center justify-center text-[#37352F]">
                       {getClubIcon(club.logo_icon)}
                     </div>
 
                     <div className="flex flex-col items-end gap-1">
                       {isHot && (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500/20 to-rose-500/20 text-amber-300 border border-amber-500/40">
-                          <Flame className="w-3 h-3 text-amber-400 fill-amber-400" />
+                        <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.2 rounded bg-[#FBEDD6] text-[#8F4800] border border-[#F5D8A8]">
+                          <Flame className="w-2.5 h-2.5 text-[#8F4800]" />
                           <span>Hot Club</span>
                         </span>
                       )}
                       {isOccasional && (
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
-                          Occasional Sprints
+                        <span className="text-[10px] font-medium px-1.5 py-0.2 rounded bg-[#F1F1EF] text-[#787774] border border-[#E9E9E7]">
+                          Periodic
                         </span>
                       )}
                       {!isHot && !isOccasional && (
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-300 border border-emerald-800/80">
+                        <span className="text-[10px] font-medium px-1.5 py-0.2 rounded bg-[#EDF3EC] text-[#2B6E38] border border-[#D3E5D2]">
                           Active Guild
                         </span>
                       )}
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-800 text-teal-300 border border-slate-700">
+                      <span className="text-[10px] font-medium px-1.5 py-0.2 rounded bg-[#F1F1EF] text-[#787774] border border-[#E9E9E7]">
                         {club.category}
                       </span>
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-1.5 flex items-center gap-1.5">
-                    <span>{club.name}</span>
+                  <h3 className="text-base font-bold text-[#37352F] mb-1">
+                    {club.name}
                   </h3>
 
                   {club.focus_domain && (
-                    <div className="mb-3">
-                      <span className="inline-block px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-800/90 text-amber-300/90 border border-slate-700">
+                    <div className="mb-2.5">
+                      <span className="inline-block px-1.5 py-0.2 rounded text-[11px] font-medium bg-[#F1F1EF] text-[#37352F] border border-[#E9E9E7]">
                         Focus: {club.focus_domain}
                       </span>
                     </div>
                   )}
 
-                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                  <p className="text-xs text-[#787774] leading-relaxed mb-3 line-clamp-2">
                     {club.description}
                   </p>
 
-                  <div className="p-3 rounded-xl bg-slate-950/90 border border-slate-800 text-[11px] space-y-2 mb-4">
+                  <div className="p-2.5 rounded bg-[#FAF9F6] border border-[#E9E9E7] text-[11px] space-y-1.5 mb-3 text-[#787774]">
                     <div>
-                      <span className="text-slate-400 font-semibold block">Key Activities:</span>
-                      <span className="text-slate-300">{club.activities}</span>
+                      <span className="font-semibold text-[#37352F] block">Activities:</span>
+                      <span>{club.activities}</span>
                     </div>
                     <div>
-                      <span className="text-slate-400 font-semibold block">Meeting Schedule:</span>
-                      <span className="text-teal-300 font-medium">{club.meeting_info}</span>
+                      <span className="font-semibold text-[#37352F] block">Schedule:</span>
+                      <span>{club.meeting_info}</span>
                     </div>
                     <div>
-                      <span className="text-slate-400 font-semibold block">Coordinator:</span>
-                      <span className="text-slate-300">{club.coordinator_name} · <span className="text-teal-400">{club.contact_email}</span></span>
+                      <span className="font-semibold text-[#37352F] block">Coordinator:</span>
+                      <span>{club.coordinator_name} · <span className="text-[#2383E2]">{club.contact_email}</span></span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-3 text-slate-400 text-[11px]">
+                <div className="pt-2.5 border-t border-[#E9E9E7] flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2 text-[#787774] text-[11px]">
                     <span><strong>{club.member_count}</strong> members</span>
                     <span>·</span>
-                    <span className="text-amber-400 font-semibold">{club.score} pts</span>
+                    <span className="text-[#37352F] font-semibold">{club.score} pts</span>
                   </div>
 
                   <button
@@ -384,14 +368,10 @@ export const ClubsPage: React.FC<{ onGoToLogin: () => void }> = ({ onGoToLogin }
                         setJoiningClub(club);
                       }
                     }}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium shadow-sm transition-all text-xs ${
-                      isHot
-                        ? 'bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold shadow-amber-600/20'
-                        : 'bg-teal-600 hover:bg-teal-500 text-white shadow-teal-700/20'
-                    }`}
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#2F2E2A] hover:bg-[#191918] text-white font-medium transition-colors text-xs"
                   >
-                    <UserPlus className="w-3.5 h-3.5" />
-                    <span>Apply / Join</span>
+                    <UserPlus className="w-3 h-3" />
+                    <span>Apply to Join</span>
                   </button>
                 </div>
               </div>
@@ -402,52 +382,52 @@ export const ClubsPage: React.FC<{ onGoToLogin: () => void }> = ({ onGoToLogin }
 
       {/* Join Club Modal */}
       {joiningClub && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-xs animate-fadeIn">
+          <div className="bg-white border border-[#E9E9E7] rounded-xl max-w-md w-full p-5 shadow-xl relative">
             <button
               onClick={() => setJoiningClub(null)}
-              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+              className="absolute top-4 right-4 p-1 rounded-md text-[#787774] hover:text-[#37352F] hover:bg-[#F1F1EF]"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
 
-            <h3 className="text-lg font-bold text-white mb-1">
+            <h3 className="text-base font-bold text-[#37352F] mb-0.5">
               Apply to Join {joiningClub.name}
             </h3>
-            <p className="text-xs text-slate-400 mb-4">
-              Submit your motivation or project portfolio link to club coordinator{' '}
-              <strong className="text-teal-300">{joiningClub.coordinator_name}</strong>.
+            <p className="text-xs text-[#787774] mb-3">
+              Submit your motivation or project portfolio link to coordinator{' '}
+              <strong className="text-[#37352F]">{joiningClub.coordinator_name}</strong>.
             </p>
 
-            <form onSubmit={handleJoinSubmit} className="space-y-4">
+            <form onSubmit={handleJoinSubmit} className="space-y-3">
               <div>
-                <label className="block text-slate-300 text-xs font-medium mb-1">
+                <label className="block text-[#37352F] text-xs font-medium mb-1">
                   Statement of Purpose / Why do you want to join?
                 </label>
                 <textarea
                   rows={4}
                   value={sop}
                   onChange={(e) => setSop(e.target.value)}
-                  placeholder="Tell the core team about your technical projects, interests, or past events you attended..."
+                  placeholder="Tell the core team about your technical projects, interests, or past events..."
                   required
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-teal-500"
+                  className="w-full bg-white border border-[#D3D1CB] rounded-md p-2.5 text-xs text-[#37352F] focus:outline-none focus:border-[#2383E2]"
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-2">
+              <div className="flex justify-end gap-2 pt-1 border-t border-[#E9E9E7]">
                 <button
                   type="button"
                   onClick={() => setJoiningClub(null)}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium"
+                  className="px-3 py-1.5 rounded-md bg-[#F1F1EF] hover:bg-[#EAE9E6] text-[#37352F] text-xs font-medium"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submittingJoin}
-                  className="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold shadow-md disabled:opacity-50"
+                  className="px-3.5 py-1.5 rounded-md bg-[#2F2E2A] hover:bg-[#191918] text-white text-xs font-medium disabled:opacity-50 transition-colors"
                 >
-                  {submittingJoin ? 'Submitting Application...' : 'Send Membership Application'}
+                  {submittingJoin ? 'Submitting...' : 'Send Application'}
                 </button>
               </div>
             </form>

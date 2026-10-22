@@ -164,25 +164,23 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
   ];
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-3xl shadow-xl overflow-hidden flex flex-col h-[750px] animate-fadeIn">
+    <div className="bg-white border border-[#D3D1CB] rounded-xl shadow-xs overflow-hidden flex flex-col h-[750px]">
       {/* Top Controls Bar */}
-      <div className="p-4 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="p-4 bg-[#FAF9F6] border-b border-[#E9E9E7] flex flex-wrap items-center justify-between gap-3 text-xs">
         {/* Title and Role */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-amber-400 p-[2px] shadow-sm">
-            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-              <Bot className="w-5 h-5 text-teal-400" />
-            </div>
+          <div className="w-9 h-9 rounded-md bg-[#F1F1EF] border border-[#D3D1CB] flex items-center justify-center text-lg select-none">
+            🤖
           </div>
           <div>
-            <h3 className="font-bold text-white text-sm flex items-center gap-2">
-              Kaushalam AI Assistant
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800">
+            <h3 className="font-bold text-[#37352F] text-sm flex items-center gap-2">
+              Kaushalam Assistant
+              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-white text-[#787774] border border-[#E9E9E7]">
                 Multi-Turn
               </span>
             </h3>
-            <p className="text-[11px] text-slate-400">
-              Role: <strong className="text-slate-200">{rolesConfig[activeRole].label}</strong>
+            <p className="text-[11px] text-[#787774]">
+              Persona: <strong className="text-[#37352F]">{rolesConfig[activeRole].label}</strong>
             </p>
           </div>
         </div>
@@ -190,12 +188,12 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
         {/* Model and Feature Selectors */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Model Selector */}
-          <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-1">
-            <Cpu className="w-3.5 h-3.5 text-teal-400" />
+          <div className="flex items-center gap-1.5 bg-white border border-[#D3D1CB] rounded-md px-2 py-1 shadow-xs">
+            <Cpu className="w-3.5 h-3.5 text-[#787774]" />
             <select
               value={selectedModel}
               onChange={(e) => setSelectedModel(e.target.value)}
-              className="bg-transparent text-slate-200 text-xs focus:outline-none cursor-pointer"
+              className="bg-transparent text-[#37352F] text-xs focus:outline-none cursor-pointer"
             >
               <option value="gemini-3.8-flash">gemini-3.8-flash (General & Search)</option>
               <option value="gemini-4-argon">gemini-4-argon (Complex Reasoning)</option>
@@ -207,41 +205,41 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
           <button
             type="button"
             onClick={() => setEnableSearch(!enableSearch)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border transition-colors ${
               enableSearch
-                ? 'bg-teal-950 text-teal-300 border-teal-700 shadow-sm'
-                : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'
+                ? 'bg-[#37352F] text-white border-[#37352F] shadow-xs'
+                : 'bg-white text-[#787774] border-[#D3D1CB] hover:text-[#37352F]'
             }`}
             title="Toggle Google Search Grounding for live web information"
           >
-            <Globe className={`w-3.5 h-3.5 ${enableSearch ? 'text-teal-400' : 'text-slate-500'}`} />
+            <Globe className="w-3.5 h-3.5" />
             <span>Search Grounding</span>
           </button>
 
           {/* Voice Conversation Modal trigger */}
           <button
             onClick={onOpenVoice}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm transition-all"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-[#2F2E2A] hover:bg-[#45433E] text-white shadow-xs transition-colors"
             title="Open Gemini 3.8 Live Voice practice session"
           >
-            <Zap className="w-3.5 h-3.5 fill-slate-950" />
-            <span>Live Voice Practice</span>
+            <Zap className="w-3.5 h-3.5" />
+            <span>Live Voice</span>
           </button>
 
           {/* Clear chat */}
           <button
             onClick={handleClearHistory}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-900 transition-colors"
+            className="p-1 rounded-md text-[#787774] hover:text-rose-600 hover:bg-[#F1F1EF] transition-colors"
             title="Reset Chat History"
           >
-            <RotateCcw className="w-4 h-4" />
+            <RotateCcw className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
 
       {/* Role Switcher Chips */}
-      <div className="px-4 py-2 bg-slate-950/60 border-b border-slate-800/80 flex items-center gap-2 overflow-x-auto text-xs">
-        <span className="text-slate-500 text-[11px] font-semibold whitespace-nowrap">Switch Persona:</span>
+      <div className="px-4 py-2 bg-[#FAF9F6] border-b border-[#E9E9E7] flex items-center gap-1.5 overflow-x-auto text-xs">
+        <span className="text-[#9B9A97] text-[11px] font-semibold whitespace-nowrap">Persona:</span>
         {(Object.keys(rolesConfig) as Array<keyof typeof rolesConfig>).map((key) => {
           const config = rolesConfig[key];
           const Icon = config.icon;
@@ -250,10 +248,10 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
             <button
               key={key}
               onClick={() => setActiveRole(key)}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap transition-colors ${
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-medium whitespace-nowrap transition-colors ${
                 isActive
-                  ? 'bg-teal-600 text-white shadow-sm'
-                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'bg-[#37352F] text-white shadow-xs'
+                  : 'bg-white text-[#787774] hover:text-[#37352F] hover:bg-[#F1F1EF] border border-[#E9E9E7]'
               }`}
             >
               <Icon className="w-3 h-3" />
@@ -264,7 +262,7 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
       </div>
 
       {/* Messages Thread (Scrollable) */}
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
+      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-white">
         {messages.map((msg) => {
           const isUser = msg.role === 'user';
           return (
@@ -274,64 +272,64 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
             >
               {/* Avatar */}
               <div
-                className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-bold ${
+                className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 text-xs font-semibold ${
                   isUser
-                    ? 'bg-teal-600 text-white'
-                    : 'bg-gradient-to-tr from-amber-500 to-teal-500 text-slate-950'
+                    ? 'bg-[#37352F] text-white'
+                    : 'bg-[#F1F1EF] border border-[#D3D1CB] text-[#37352F]'
                 }`}
               >
-                {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                {isUser ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
               </div>
 
               {/* Message Bubble */}
               <div
-                className={`max-w-[85%] rounded-2xl p-4 text-xs leading-relaxed ${
+                className={`max-w-[85%] rounded-xl p-3.5 text-xs leading-relaxed ${
                   isUser
-                    ? 'bg-teal-600 text-white shadow-md'
-                    : 'bg-slate-950 border border-slate-800 text-slate-200 shadow-md'
+                    ? 'bg-[#F1F1EF] text-[#37352F] border border-[#E9E9E7]'
+                    : 'bg-[#FAF9F6] border border-[#E9E9E7] text-[#37352F]'
                 }`}
               >
                 {/* Meta info */}
-                <div className="flex items-center justify-between gap-4 mb-1.5 text-[10px] text-slate-400">
-                  <span className="font-semibold">{isUser ? 'You' : 'Kaushalam Assistant'}</span>
+                <div className="flex items-center justify-between gap-4 mb-1 text-[10px] text-[#9B9A97]">
+                  <span className="font-semibold text-[#787774]">{isUser ? 'You' : 'Assistant'}</span>
                   <div className="flex items-center gap-2">
                     {msg.modelUsed && (
-                      <span className="text-[9px] px-1.5 py-0.2 rounded bg-slate-800 text-teal-300">
+                      <span className="text-[9px] px-1 py-0.2 rounded bg-white border border-[#E9E9E7] text-[#787774]">
                         {msg.modelUsed}
                       </span>
                     )}
                     <span>{msg.timestamp}</span>
                     <button
                       onClick={() => handleCopy(msg.content, msg.id)}
-                      className="hover:text-white"
+                      className="hover:text-[#37352F]"
                       title="Copy text"
                     >
-                      {copiedId === msg.id ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      {copiedId === msg.id ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
                     </button>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="whitespace-pre-wrap font-sans text-xs">{msg.content}</div>
+                <div className="whitespace-pre-wrap font-sans text-xs text-[#37352F]">{msg.content}</div>
 
                 {/* Grounding Source Citations (from Google Search) */}
                 {msg.groundingChunks && msg.groundingChunks.length > 0 && (
-                  <div className="mt-3 pt-2.5 border-t border-slate-800 space-y-1.5">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-teal-400 flex items-center gap-1">
-                      <Globe className="w-3 h-3" />
+                  <div className="mt-2.5 pt-2 border-t border-[#E9E9E7] space-y-1">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-[#787774] flex items-center gap-1">
+                      <Globe className="w-3 h-3 text-[#37352F]" />
                       <span>Verified Google Search Sources:</span>
                     </span>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1">
                       {msg.groundingChunks.map((chunk, i) => (
                         <a
                           key={i}
                           href={chunk.uri}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-900 border border-slate-700/80 text-teal-300 text-[10px] hover:border-teal-500 hover:text-white transition-colors"
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white border border-[#D3D1CB] text-[#37352F] text-[10px] hover:bg-[#F1F1EF] transition-colors"
                         >
                           <span className="truncate max-w-[200px]">{chunk.title || chunk.uri}</span>
-                          <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                          <ExternalLink className="w-2.5 h-2.5 shrink-0 text-[#9B9A97]" />
                         </a>
                       ))}
                     </div>
@@ -344,12 +342,12 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
 
         {loading && (
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-xl bg-slate-800 flex items-center justify-center text-teal-400">
-              <Bot className="w-4 h-4 animate-spin" />
+            <div className="w-7 h-7 rounded-md bg-[#F1F1EF] border border-[#D3D1CB] flex items-center justify-center text-[#37352F]">
+              <Bot className="w-3.5 h-3.5 animate-spin" />
             </div>
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 text-xs text-slate-400 flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
-              <span>Consulting Gemini with {rolesConfig[activeRole].label}...</span>
+            <div className="bg-[#FAF9F6] border border-[#E9E9E7] rounded-xl p-3 text-xs text-[#787774] flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#37352F] animate-ping" />
+              <span>Thinking with {rolesConfig[activeRole].label}...</span>
             </div>
           </div>
         )}
@@ -358,13 +356,13 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
       </div>
 
       {/* Quick Prompts suggestions */}
-      <div className="px-4 py-2 bg-slate-950/80 border-t border-slate-800/80 flex items-center gap-2 overflow-x-auto text-[11px]">
-        <span className="text-slate-500 whitespace-nowrap font-medium">Suggestions:</span>
+      <div className="px-4 py-2 bg-[#FAF9F6] border-t border-[#E9E9E7] flex items-center gap-1.5 overflow-x-auto text-[11px]">
+        <span className="text-[#9B9A97] whitespace-nowrap font-medium">Suggestions:</span>
         {suggestions.map((prompt, idx) => (
           <button
             key={idx}
             onClick={() => handleSend(prompt)}
-            className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-teal-300 border border-slate-800 whitespace-nowrap transition-colors"
+            className="px-2.5 py-1 rounded-md bg-white hover:bg-[#F1F1EF] text-[#787774] hover:text-[#37352F] border border-[#D3D1CB] whitespace-nowrap transition-colors"
           >
             {prompt}
           </button>
@@ -372,7 +370,7 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
       </div>
 
       {/* Input Box */}
-      <div className="p-4 bg-slate-950 border-t border-slate-800">
+      <div className="p-3.5 bg-white border-t border-[#E9E9E7]">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -384,16 +382,16 @@ export const GeminiChatbot: React.FC<{ onOpenVoice: () => void }> = ({ onOpenVoi
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={`Ask ${rolesConfig[activeRole].label} (e.g. explain Dijkstra algorithm, interview mock, or search tech trends)...`}
-            className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-teal-500"
+            placeholder={`Ask ${rolesConfig[activeRole].label}...`}
+            className="flex-1 bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] placeholder-[#9B9A97] focus:outline-none focus:bg-white focus:border-[#37352F]"
           />
           <button
             type="submit"
             disabled={loading || !input.trim()}
-            className="px-5 py-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs shadow-md shadow-teal-700/20 transition-all flex items-center gap-2 disabled:opacity-50"
+            className="px-4 py-2 rounded-md bg-[#2F2E2A] hover:bg-[#45433E] text-white font-medium text-xs shadow-xs transition-colors flex items-center gap-1.5 disabled:opacity-50"
           >
-            <Send className="w-4 h-4" />
-            <span className="hidden sm:inline">Ask AI</span>
+            <Send className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Send</span>
           </button>
         </form>
       </div>

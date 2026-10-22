@@ -30,10 +30,10 @@ function MainApp() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center text-teal-400 text-xs">
+      <div className="min-h-screen bg-[#FBFBFA] flex items-center justify-center text-[#787774] text-xs">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
-          <span>Initializing Kaushalam Campus Engine...</span>
+          <div className="w-6 h-6 border-2 border-[#37352F] border-t-transparent rounded-full animate-spin" />
+          <span className="font-medium text-[#787774]">Loading Kaushalam...</span>
         </div>
       </div>
     );
@@ -172,14 +172,14 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans selection:bg-teal-500 selection:text-slate-950">
+    <div className="min-h-screen flex flex-col bg-[#FBFBFA] text-[#37352F] font-sans selection:bg-[#E7F3F8] selection:text-[#37352F]">
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         openOutbox={() => setIsOutboxOpen(true)}
       />
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 w-full">
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 w-full">
         {renderContent()}
       </main>
 

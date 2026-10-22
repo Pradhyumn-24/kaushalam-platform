@@ -42,36 +42,29 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openOut
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 text-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E9E9E7] text-[#37352F]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14">
+          {/* Logo / Workspace Title */}
           <div
             onClick={() => setActiveTab(user ? (role === 'teacher' ? 'teacher-dashboard' : 'learner-dashboard') : 'welcome')}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 via-emerald-500 to-amber-400 p-[2px] shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <GraduationCap className="w-5 h-5 text-teal-400" />
-              </div>
+            <div className="w-7 h-7 rounded-md bg-[#F1F1EF] border border-[#E9E9E7] flex items-center justify-center text-[#37352F] group-hover:bg-[#EAE9E6] transition-colors">
+              <GraduationCap className="w-4 h-4 text-[#37352F]" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-lg tracking-tight bg-gradient-to-r from-teal-200 via-emerald-100 to-amber-200 bg-clip-text text-transparent">
-                  Kaushalam
-                </span>
-                <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-teal-950 border border-teal-800 text-teal-300">
-                  Campus
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 font-medium hidden sm:block">
-                Peer-to-Peer Learning Platform
-              </p>
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-sm tracking-tight text-[#37352F]">
+                Kaushalam
+              </span>
+              <span className="text-[11px] font-normal px-1.5 py-0.5 rounded bg-[#F1F1EF] text-[#787774] border border-[#E9E9E7]">
+                Campus
+              </span>
             </div>
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-0.5">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -79,13 +72,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openOut
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors ${
                     isActive
-                      ? 'bg-slate-800 text-teal-300 shadow-sm border border-slate-700'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-900/60'
+                      ? 'bg-[#EFEFED] text-[#37352F] font-semibold'
+                      : 'text-[#787774] hover:text-[#37352F] hover:bg-[#F7F6F3]'
                   }`}
                 >
-                  <Icon className="w-4 h-4 text-slate-400" />
+                  <Icon className="w-3.5 h-3.5 text-[#9B9A97]" />
                   {item.label}
                 </button>
               );
@@ -93,30 +86,30 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openOut
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
             {/* Outbox diagnostics button */}
             <button
               onClick={openOutbox}
               title="View System Outbox & Email Logs"
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700/80 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-normal text-[#787774] hover:text-[#37352F] hover:bg-[#F1F1EF] transition-colors"
             >
-              <Mail className="w-3.5 h-3.5 text-amber-400" />
+              <Mail className="w-3.5 h-3.5 text-[#9B9A97]" />
               <span>Email Logs</span>
             </button>
 
             {user ? (
-              <div className="flex items-center gap-3 pl-2 border-l border-slate-800">
+              <div className="flex items-center gap-2 pl-2 border-l border-[#E9E9E7]">
                 <button
                   onClick={() => setActiveTab(role === 'teacher' ? 'teacher-dashboard' : 'learner-dashboard')}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                  className={`flex items-center gap-2 px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
                     activeTab.includes('dashboard')
-                      ? 'bg-teal-500/20 text-teal-300 border-teal-500/50'
-                      : 'bg-slate-900 text-slate-200 border-slate-700 hover:bg-slate-800'
+                      ? 'bg-[#EFEFED] text-[#37352F] font-semibold'
+                      : 'text-[#37352F] hover:bg-[#F7F6F3]'
                   }`}
                 >
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   <span>{user.full_name.split(' ')[0]}</span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded uppercase font-bold tracking-wider bg-slate-800 text-slate-300">
+                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-[#F1F1EF] text-[#787774] uppercase font-semibold">
                     {role === 'teacher' ? 'Teacher' : 'Learner'}
                   </span>
                 </button>
@@ -124,46 +117,46 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openOut
                 <button
                   onClick={logout}
                   title="Log out of Kaushalam"
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-rose-400 hover:bg-rose-950/20 border border-transparent hover:border-rose-900/40 transition-all"
+                  className="flex items-center gap-1 px-2 py-1 rounded-md text-xs text-[#787774] hover:text-[#EB5757] hover:bg-[#FDEBEC] transition-colors"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Logout</span>
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
+              <div className="flex items-center gap-1.5 pl-2 border-l border-[#E9E9E7]">
                 <button
                   onClick={() => setActiveTab('login')}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.2 rounded-md text-xs font-medium text-[#37352F] hover:bg-[#F7F6F3] transition-colors"
                 >
-                  <LogIn className="w-3.5 h-3.5 text-teal-400" />
-                  <span>Log In</span>
+                  <LogIn className="w-3.5 h-3.5 text-[#787774]" />
+                  <span>Log in</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('register-learner')}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-600 hover:bg-teal-500 text-white shadow-sm shadow-teal-700/20 transition-all"
+                  className="flex items-center gap-1.5 px-3 py-1.2 rounded-md text-xs font-medium bg-[#2F2E2A] hover:bg-[#191918] text-white shadow-none transition-colors"
                 >
                   <UserPlus className="w-3.5 h-3.5" />
-                  <span>Sign Up</span>
+                  <span>Sign up</span>
                 </button>
               </div>
             )}
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex md:hidden items-center gap-1">
             <button
               onClick={openOutbox}
               title="Email Logs"
-              className="p-2 text-slate-400 hover:text-white"
+              className="p-1.5 text-[#787774] hover:text-[#37352F]"
             >
-              <Mail className="w-4 h-4 text-amber-400" />
+              <Mail className="w-4 h-4" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 focus:outline-none"
+              className="p-1.5 rounded-md text-[#787774] hover:text-[#37352F] hover:bg-[#F7F6F3] focus:outline-none"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -171,11 +164,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openOut
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-800 bg-slate-950/95 px-4 pt-2 pb-4 space-y-2">
+        <div className="md:hidden border-b border-[#E9E9E7] bg-white px-4 pt-2 pb-4 space-y-1">
           {user && (
-            <div className="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-between text-xs mb-2">
-              <span className="font-semibold text-white">{user.full_name}</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-wider bg-teal-950 text-teal-300 border border-teal-800">
+            <div className="px-3 py-2 rounded-md bg-[#F7F6F3] border border-[#E9E9E7] flex items-center justify-between text-xs mb-2">
+              <span className="font-semibold text-[#37352F]">{user.full_name}</span>
+              <span className="text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider bg-[#EAE9E6] text-[#787774]">
                 {role}
               </span>
             </div>
@@ -184,9 +177,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openOut
           {user && (
             <button
               onClick={() => handleNavClick(role === 'teacher' ? 'teacher-dashboard' : 'learner-dashboard')}
-              className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-teal-400 bg-teal-950/40 border border-teal-900"
+              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-md text-sm text-[#37352F] hover:bg-[#F7F6F3]"
             >
-              <UserIcon className="w-4 h-4" />
+              <UserIcon className="w-4 h-4 text-[#787774]" />
               <span>Go to My Dashboard</span>
             </button>
           )}
@@ -195,21 +188,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openOut
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900"
+              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-md text-sm text-[#787774] hover:text-[#37352F] hover:bg-[#F7F6F3]"
             >
-              <item.icon className="w-4 h-4 text-slate-400" />
+              <item.icon className="w-4 h-4 text-[#9B9A97]" />
               <span>{item.label}</span>
             </button>
           ))}
 
-          <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
+          <div className="pt-2 border-t border-[#E9E9E7] flex items-center justify-between">
             {user ? (
               <button
                 onClick={() => {
                   logout();
                   setMobileMenuOpen(false);
                 }}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm text-rose-400 hover:bg-rose-950/30"
+                className="w-full flex items-center justify-center gap-2 px-3 py-1.5 rounded-md text-sm text-[#EB5757] hover:bg-[#FDEBEC]"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Log Out</span>
@@ -218,15 +211,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openOut
               <div className="w-full grid grid-cols-2 gap-2">
                 <button
                   onClick={() => handleNavClick('login')}
-                  className="py-2 text-center text-sm font-medium bg-slate-900 text-slate-200 rounded-lg"
+                  className="py-1.5 text-center text-sm font-medium border border-[#D3D1CB] text-[#37352F] rounded-md hover:bg-[#F7F6F3]"
                 >
                   Login
                 </button>
                 <button
-                  onClick={() => handleNavClick('welcome')}
-                  className="py-2 text-center text-sm font-medium bg-teal-600 text-white rounded-lg"
+                  onClick={() => handleNavClick('register-learner')}
+                  className="py-1.5 text-center text-sm font-medium bg-[#2F2E2A] text-white rounded-md hover:bg-[#191918]"
                 >
-                  Register
+                  Sign Up
                 </button>
               </div>
             )}
