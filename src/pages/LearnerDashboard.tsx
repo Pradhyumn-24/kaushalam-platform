@@ -79,49 +79,49 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
   const skillsWanted = user?.skills_wanted || [];
 
   return (
-    <div className="space-y-8 animate-fadeIn pb-12">
-      {/* Personalized Welcome Banner */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-teal-950/40 to-slate-900 border border-slate-800 p-6 sm:p-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950 border border-teal-800 text-teal-300 text-xs font-semibold">
-              <BookOpen className="w-3.5 h-3.5 text-teal-400" />
+    <div className="space-y-6 animate-fadeIn pb-12">
+      {/* Notion Workspace Header */}
+      <section className="bg-white border border-[#E9E9E7] rounded-xl p-6 sm:p-7 shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="inline-flex items-center gap-1.5 text-xs text-[#787774] font-medium">
+              <BookOpen className="w-3.5 h-3.5 text-[#37352F]" />
               <span>Learner Workspace</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+            <h1 className="text-xl sm:text-2xl font-bold text-[#37352F]">
               Welcome back, {user?.full_name}!
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300">
+            <p className="text-xs text-[#787774]">
               {user?.college} · {user?.course} ({user?.branch}) · Year {user?.year_of_study}
               {user?.student_id ? ` · ID: ${user?.student_id}` : ''}
             </p>
             {user?.bio && (
-              <p className="text-xs text-slate-400 max-w-2xl italic mt-1">
+              <p className="text-xs text-[#787774] max-w-2xl italic mt-1">
                 "{user.bio}"
               </p>
             )}
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
             <button
               onClick={() => setActiveTab('book-session')}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold shadow-md shadow-teal-700/20 transition-all"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#2F2E2A] hover:bg-[#191918] text-white text-xs font-medium transition-colors"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Book a Session</span>
             </button>
             <button
               onClick={() => setActiveTab('teachers')}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#F1F1EF] hover:bg-[#EAE9E6] text-[#37352F] text-xs font-medium border border-[#E9E9E7] transition-colors"
             >
-              <Search className="w-3.5 h-3.5 text-teal-400" />
+              <Search className="w-3.5 h-3.5 text-[#787774]" />
               <span>Browse Mentors</span>
             </button>
             <button
               onClick={() => setActiveTab('history')}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#F1F1EF] hover:bg-[#EAE9E6] text-[#37352F] text-xs font-medium border border-[#E9E9E7] transition-colors"
             >
-              <History className="w-3.5 h-3.5" />
+              <History className="w-3.5 h-3.5 text-[#787774]" />
               <span>History</span>
             </button>
           </div>
@@ -129,12 +129,12 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
 
         {/* Learning Goals / Target Skills Chips */}
         {skillsWanted.length > 0 && (
-          <div className="mt-5 pt-4 border-t border-slate-800 flex flex-wrap items-center gap-2 text-xs">
-            <span className="text-slate-400 font-medium">My Target Skills:</span>
+          <div className="mt-4 pt-3 border-t border-[#E9E9E7] flex flex-wrap items-center gap-1.5 text-xs">
+            <span className="text-[#787774] font-medium">My Target Skills:</span>
             {skillsWanted.map((skill) => (
               <span
                 key={skill}
-                className="px-2.5 py-1 rounded-lg bg-teal-950/80 text-teal-300 border border-teal-800/80 font-medium text-[11px]"
+                className="px-2 py-0.5 rounded bg-[#F1F1EF] text-[#37352F] border border-[#E9E9E7] font-medium text-[11px]"
               >
                 {skill}
               </span>
@@ -144,111 +144,110 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
       </section>
 
       {feedbackMessage && (
-        <div className="p-4 rounded-xl bg-teal-950/60 border border-teal-800 text-teal-200 text-xs flex items-center justify-between">
+        <div className="p-3 rounded-md bg-[#EDF3EC] border border-[#D3E5D2] text-[#2B6E38] text-xs flex items-center justify-between">
           <span>{feedbackMessage}</span>
-          <button onClick={() => setFeedbackMessage(null)} className="text-teal-400 font-bold ml-4">
+          <button onClick={() => setFeedbackMessage(null)} className="text-[#2B6E38] font-bold ml-4">
             ×
           </button>
         </div>
       )}
 
       {/* Metrics Row */}
-      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-slate-400">Pending Requests</span>
-            <div className="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
-              <Clock className="w-4 h-4" />
+      <section className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="bg-white border border-[#E9E9E7] rounded-lg p-4 shadow-xs">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs text-[#787774]">Pending Requests</span>
+            <div className="w-6 h-6 rounded bg-[#FAF3DD] text-[#8F6B00] flex items-center justify-center">
+              <Clock className="w-3.5 h-3.5" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-white">{pendingSessions.length}</div>
-          <p className="text-[11px] text-slate-500 mt-1">Awaiting mentor confirmation</p>
+          <div className="text-2xl font-bold text-[#37352F]">{pendingSessions.length}</div>
+          <p className="text-[11px] text-[#9B9A97] mt-0.5">Awaiting mentor confirmation</p>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-slate-400">Confirmed Upcoming</span>
-            <div className="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <CheckCircle className="w-4 h-4" />
+        <div className="bg-white border border-[#E9E9E7] rounded-lg p-4 shadow-xs">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs text-[#787774]">Confirmed Upcoming</span>
+            <div className="w-6 h-6 rounded bg-[#EDF3EC] text-[#2B6E38] flex items-center justify-center">
+              <CheckCircle className="w-3.5 h-3.5" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-white">{upcomingSessions.length}</div>
-          <p className="text-[11px] text-slate-500 mt-1">Ready with Google Meet link</p>
+          <div className="text-2xl font-bold text-[#37352F]">{upcomingSessions.length}</div>
+          <p className="text-[11px] text-[#9B9A97] mt-0.5">Ready with Google Meet link</p>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-slate-400">Target Skills</span>
-            <div className="w-7 h-7 rounded-lg bg-teal-500/10 text-teal-400 flex items-center justify-center">
-              <BookOpen className="w-4 h-4" />
+        <div className="bg-white border border-[#E9E9E7] rounded-lg p-4 shadow-xs">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs text-[#787774]">Target Skills</span>
+            <div className="w-6 h-6 rounded bg-[#E7F3F8] text-[#1E6B8D] flex items-center justify-center">
+              <BookOpen className="w-3.5 h-3.5" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-white">{skillsWanted.length || 3}</div>
-          <p className="text-[11px] text-slate-500 mt-1">Active peer learning focus</p>
+          <div className="text-2xl font-bold text-[#37352F]">{skillsWanted.length || 3}</div>
+          <p className="text-[11px] text-[#9B9A97] mt-0.5">Active peer learning focus</p>
         </div>
       </section>
 
       {/* Confirmed Upcoming Sessions */}
-      <section className="space-y-4">
+      <section className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <CheckCircle className="w-5 h-5 text-emerald-400" />
+          <h3 className="text-sm font-bold text-[#37352F] flex items-center gap-1.5">
+            <CheckCircle className="w-4 h-4 text-emerald-600" />
             <span>Upcoming Approved Sessions</span>
           </h3>
-          <span className="text-xs text-slate-500">{upcomingSessions.length} scheduled</span>
+          <span className="text-xs text-[#787774]">{upcomingSessions.length} scheduled</span>
         </div>
 
         {upcomingSessions.length === 0 ? (
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 text-center text-xs text-slate-400">
-            <Calendar className="w-8 h-8 text-slate-600 mx-auto mb-2" />
-            <p className="text-slate-300 font-medium">No upcoming approved sessions yet.</p>
-            <p className="text-slate-500 mt-1">
+          <div className="bg-white border border-[#E9E9E7] rounded-lg p-6 text-center text-xs text-[#787774]">
+            <Calendar className="w-6 h-6 text-[#9B9A97] mx-auto mb-1.5" />
+            <p className="text-[#37352F] font-medium">No upcoming approved sessions yet.</p>
+            <p className="text-[#787774] mt-0.5">
               Browse the teacher directory and book a session with a student mentor.
             </p>
             <button
               onClick={() => setActiveTab('teachers')}
-              className="mt-4 px-4 py-2 bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-medium inline-flex items-center gap-1.5"
+              className="mt-3 px-3 py-1.5 bg-[#2F2E2A] hover:bg-[#191918] text-white rounded-md font-medium text-xs inline-flex items-center gap-1.5 transition-colors"
             >
               <span>Explore Teachers</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3 h-3" />
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {upcomingSessions.map((session) => (
               <div
                 key={session.id}
-                className="bg-slate-900 border border-emerald-900/40 rounded-2xl p-5 shadow-lg relative overflow-hidden"
+                className="bg-white border border-[#E9E9E7] rounded-lg p-4 shadow-xs relative overflow-hidden"
               >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-400" />
-                <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex items-start justify-between gap-3 mb-2.5">
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
-                      Confirmed Session
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-[#EDF3EC] text-[#2B6E38] border border-[#D3E5D2]">
+                      Confirmed
                     </span>
-                    <h4 className="text-base font-bold text-white mt-1.5">{session.skill}</h4>
-                    <p className="text-xs text-slate-300">
-                      Teacher: <strong className="text-white">{session.teacher_name}</strong> ({session.teacher_email})
+                    <h4 className="text-sm font-bold text-[#37352F] mt-1">{session.skill}</h4>
+                    <p className="text-xs text-[#787774]">
+                      Teacher: <strong className="text-[#37352F]">{session.teacher_name}</strong> ({session.teacher_email})
                     </p>
                   </div>
                   <div className="text-right text-xs">
-                    <span className="font-semibold text-slate-200 block">{session.scheduled_date}</span>
-                    <span className="text-teal-400 font-mono">{session.scheduled_time}</span>
+                    <span className="font-semibold text-[#37352F] block">{session.scheduled_date}</span>
+                    <span className="text-[#787774] font-mono text-[11px]">{session.scheduled_time}</span>
                   </div>
                 </div>
 
-                <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 mb-4 space-y-1">
-                  <p><strong>Goal:</strong> {session.learning_objective}</p>
+                <div className="p-2.5 rounded bg-[#FAF9F6] border border-[#E9E9E7] text-xs text-[#787774] mb-3 space-y-1">
+                  <p><strong className="text-[#37352F]">Goal:</strong> {session.learning_objective}</p>
                   {session.teacher_notes && (
-                    <p className="text-emerald-300">
+                    <p className="text-[#2B6E38]">
                       <strong>Teacher's note:</strong> "{session.teacher_notes}"
                     </p>
                   )}
                 </div>
 
-                <div className="flex items-center justify-between pt-2 border-t border-slate-800/80 text-xs">
-                  <span className="text-slate-400 flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-slate-500" />
+                <div className="flex items-center justify-between pt-2 border-t border-[#E9E9E7] text-xs">
+                  <span className="text-[#787774] flex items-center gap-1 text-[11px]">
+                    <Clock className="w-3 h-3 text-[#9B9A97]" />
                     {session.duration_minutes} minutes
                   </span>
 
@@ -258,21 +257,21 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
                         href={session.meeting_link}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-colors"
+                        className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#2F2E2A] hover:bg-[#191918] text-white font-medium text-xs transition-colors"
                       >
-                        <Video className="w-3.5 h-3.5" />
+                        <Video className="w-3 h-3" />
                         <span>Join Meeting</span>
                       </a>
                     ) : (
-                      <span className="text-slate-500 text-[11px]">Link pending</span>
+                      <span className="text-[#9B9A97] text-[11px]">Link pending</span>
                     )}
 
                     <button
                       onClick={() => setCancellingSessionId(session.id)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition-colors"
+                      className="p-1 rounded text-[#9B9A97] hover:text-[#EB5757] hover:bg-[#FDEBEC] transition-colors"
                       title="Cancel Session"
                     >
-                      <XCircle className="w-4 h-4" />
+                      <XCircle className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
@@ -283,48 +282,48 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
       </section>
 
       {/* Pending Session Requests */}
-      <section className="space-y-4">
+      <section className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Clock className="w-5 h-5 text-amber-400" />
+          <h3 className="text-sm font-bold text-[#37352F] flex items-center gap-1.5">
+            <Clock className="w-4 h-4 text-amber-500" />
             <span>My Pending Requests</span>
           </h3>
-          <span className="text-xs text-slate-500">{pendingSessions.length} pending</span>
+          <span className="text-xs text-[#787774]">{pendingSessions.length} pending</span>
         </div>
 
         {pendingSessions.length === 0 ? (
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 text-center text-xs text-slate-500">
+          <div className="bg-white border border-[#E9E9E7] rounded-lg p-5 text-center text-xs text-[#787774]">
             No pending requests currently awaiting teacher approval.
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {pendingSessions.map((session) => (
-              <div key={session.id} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-xs">
+              <div key={session.id} className="bg-white border border-[#E9E9E7] rounded-lg p-4 text-xs shadow-xs">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">
-                      Pending Teacher Approval
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-[#FAF3DD] text-[#8F6B00] border border-[#F3E7BE]">
+                      Pending Approval
                     </span>
-                    <h4 className="text-sm font-bold text-white mt-1">{session.skill}</h4>
-                    <p className="text-slate-400">Mentor: {session.teacher_name}</p>
+                    <h4 className="text-xs font-bold text-[#37352F] mt-1">{session.skill}</h4>
+                    <p className="text-[#787774]">Mentor: {session.teacher_name}</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-slate-300 block">{session.scheduled_date}</span>
-                    <span className="text-amber-400 font-mono">{session.scheduled_time}</span>
+                    <span className="text-[#37352F] block font-medium">{session.scheduled_date}</span>
+                    <span className="text-[#787774] font-mono text-[11px]">{session.scheduled_time}</span>
                   </div>
                 </div>
 
-                <p className="text-slate-300 bg-slate-950 p-2.5 rounded-lg border border-slate-800/80 mb-3">
+                <p className="text-[#787774] bg-[#FAF9F6] p-2 rounded border border-[#E9E9E7] mb-2.5">
                   "{session.learning_objective}"
                 </p>
 
-                <div className="flex items-center justify-between pt-2 border-t border-slate-800">
-                  <span className="text-slate-500 text-[11px]">
+                <div className="flex items-center justify-between pt-2 border-t border-[#E9E9E7]">
+                  <span className="text-[#9B9A97] text-[11px]">
                     Requested: {new Date(session.requested_at).toLocaleDateString()}
                   </span>
                   <button
                     onClick={() => setCancellingSessionId(session.id)}
-                    className="px-2.5 py-1 rounded bg-slate-800 hover:bg-rose-950/60 text-slate-300 hover:text-rose-300 border border-slate-700 transition-colors"
+                    className="px-2 py-0.5 rounded bg-[#F1F1EF] hover:bg-[#FDEBEC] text-[#787774] hover:text-[#EB5757] border border-[#E9E9E7] transition-colors text-[11px]"
                   >
                     Cancel Request
                   </button>
@@ -336,47 +335,47 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
       </section>
 
       {/* Suggested Peer Teachers */}
-      <section className="space-y-4">
+      <section className="space-y-3">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-bold text-white">Recommended Mentors</h3>
-            <p className="text-xs text-slate-400">Available peer teachers from various engineering & design departments.</p>
+            <h3 className="text-sm font-bold text-[#37352F]">Recommended Mentors</h3>
+            <p className="text-xs text-[#787774]">Available peer teachers from various departments.</p>
           </div>
           <button
             onClick={() => setActiveTab('teachers')}
-            className="text-xs text-teal-400 hover:text-teal-300 font-semibold flex items-center gap-1"
+            className="text-xs text-[#787774] hover:text-[#37352F] font-medium flex items-center gap-1 transition-colors"
           >
-            <span>See All Teachers</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>See all mentors</span>
+            <ArrowRight className="w-3 h-3" />
           </button>
         </div>
 
         {teachers.length === 0 ? (
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center text-xs text-slate-400">
-            <GraduationCap className="w-8 h-8 text-slate-600 mx-auto mb-2" />
-            <p className="text-white font-medium">No registered teachers available yet.</p>
-            <p className="text-slate-500 mt-1">Once student mentors register, they will be listed here for 1-on-1 peer sessions.</p>
+          <div className="bg-white border border-[#E9E9E7] rounded-lg p-6 text-center text-xs text-[#787774]">
+            <GraduationCap className="w-6 h-6 text-[#9B9A97] mx-auto mb-1.5" />
+            <p className="text-[#37352F] font-medium">No registered teachers available yet.</p>
+            <p className="text-[#787774] mt-0.5">Once student mentors register, they will be listed here for 1-on-1 peer sessions.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {teachers.map((teacher) => (
-              <div key={teacher.id} className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between text-xs">
+              <div key={teacher.id} className="bg-white border border-[#E9E9E7] rounded-lg p-3.5 flex flex-col justify-between text-xs shadow-xs">
                 <div>
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center gap-2.5 mb-2.5">
                     <img
                       src={teacher.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80'}
                       alt={teacher.full_name}
-                      className="w-10 h-10 rounded-xl object-cover border border-slate-700"
+                      className="w-8 h-8 rounded-md object-cover border border-[#E9E9E7]"
                     />
                     <div>
-                      <h5 className="font-bold text-white text-xs">{teacher.full_name}</h5>
-                      <p className="text-[11px] text-slate-400">{teacher.category}</p>
+                      <h5 className="font-semibold text-[#37352F] text-xs">{teacher.full_name}</h5>
+                      <p className="text-[11px] text-[#787774]">{teacher.category}</p>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-1 mb-3">
+                  <div className="flex flex-wrap gap-1 mb-2.5">
                     {teacher.skills.slice(0, 2).map((s) => (
-                      <span key={s} className="px-2 py-0.5 rounded bg-slate-800 text-teal-300 text-[10px] font-medium">
+                      <span key={s} className="px-1.5 py-0.5 rounded bg-[#F1F1EF] text-[#37352F] text-[10px] font-medium">
                         {s}
                       </span>
                     ))}
@@ -385,7 +384,7 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
 
                 <button
                   onClick={() => setSelectedTeacherForBooking(teacher)}
-                  className="w-full py-1.5 rounded-lg bg-teal-600/20 hover:bg-teal-600 text-teal-200 hover:text-white border border-teal-500/30 font-medium transition-colors text-center"
+                  className="w-full py-1 rounded bg-[#F1F1EF] hover:bg-[#EAE9E6] text-[#37352F] border border-[#E9E9E7] font-medium transition-colors text-center text-xs"
                 >
                   Request Session
                 </button>
@@ -396,42 +395,42 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
       </section>
 
       {/* Quick Campus Links Grid */}
-      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+      <section className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
         <div
           onClick={() => setActiveTab('clubs')}
-          className="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors group"
+          className="p-4 rounded-lg bg-white border border-[#E9E9E7] hover:border-[#D3D1CB] cursor-pointer transition-all shadow-xs group"
         >
-          <div className="flex items-center gap-3 mb-2">
-            <Users className="w-5 h-5 text-teal-400 group-hover:scale-110 transition-transform" />
-            <h4 className="font-bold text-white text-sm">College Clubs Directory</h4>
+          <div className="flex items-center gap-2 mb-1.5">
+            <Users className="w-4 h-4 text-[#37352F]" />
+            <h4 className="font-semibold text-[#37352F] text-xs">College Clubs Directory</h4>
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-[#787774] leading-relaxed">
             Discover student societies in coding, robotics, sports, and debating.
           </p>
         </div>
 
         <div
           onClick={() => setActiveTab('announcements')}
-          className="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors group"
+          className="p-4 rounded-lg bg-white border border-[#E9E9E7] hover:border-[#D3D1CB] cursor-pointer transition-all shadow-xs group"
         >
-          <div className="flex items-center gap-3 mb-2">
-            <Bell className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform" />
-            <h4 className="font-bold text-white text-sm">Campus Announcements</h4>
+          <div className="flex items-center gap-2 mb-1.5">
+            <Bell className="w-4 h-4 text-[#37352F]" />
+            <h4 className="font-semibold text-[#37352F] text-xs">Campus Announcements</h4>
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-[#787774] leading-relaxed">
             Official department notices, hackathon registrations, and guest workshops.
           </p>
         </div>
 
         <div
           onClick={() => setActiveTab('leaderboard')}
-          className="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors group"
+          className="p-4 rounded-lg bg-white border border-[#E9E9E7] hover:border-[#D3D1CB] cursor-pointer transition-all shadow-xs group"
         >
-          <div className="flex items-center gap-3 mb-2">
-            <Trophy className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform" />
-            <h4 className="font-bold text-white text-sm">Club Leaderboard</h4>
+          <div className="flex items-center gap-2 mb-1.5">
+            <Trophy className="w-4 h-4 text-[#37352F]" />
+            <h4 className="font-semibold text-[#37352F] text-xs">Club Leaderboard</h4>
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-[#787774] leading-relaxed">
             Track category-wise club points and student engagement achievements.
           </p>
         </div>
@@ -439,14 +438,14 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
 
       {/* Cancellation Confirmation Modal */}
       {cancellingSessionId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4">
-            <h4 className="text-base font-bold text-white">Cancel Session Request?</h4>
-            <p className="text-xs text-slate-400">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-xs animate-fadeIn">
+          <div className="bg-white border border-[#E9E9E7] rounded-xl max-w-sm w-full p-5 shadow-xl space-y-3">
+            <h4 className="text-sm font-bold text-[#37352F]">Cancel Session Request?</h4>
+            <p className="text-xs text-[#787774]">
               Are you sure you want to cancel this peer learning session? This action cannot be undone.
             </p>
             {cancelError && (
-              <div className="p-2.5 rounded-lg bg-rose-950/60 border border-rose-800 text-rose-200 text-xs">
+              <div className="p-2 rounded bg-[#FDEBEC] border border-[#F5C2C7] text-[#EB5757] text-xs">
                 {cancelError}
               </div>
             )}
@@ -454,7 +453,7 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
               <button
                 type="button"
                 onClick={() => setCancellingSessionId(null)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs"
+                className="px-3 py-1.5 bg-[#F1F1EF] hover:bg-[#EAE9E6] text-[#37352F] rounded-md text-xs font-medium"
               >
                 Keep Session
               </button>
@@ -462,9 +461,9 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ setActiveTab
                 type="button"
                 onClick={handleConfirmCancel}
                 disabled={cancelLoading}
-                className="px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white font-semibold rounded-lg text-xs disabled:opacity-50"
+                className="px-3 py-1.5 bg-[#EB5757] hover:bg-[#DC3545] text-white font-medium rounded-md text-xs disabled:opacity-50"
               >
-                {cancelLoading ? 'Cancelling...' : 'Yes, Cancel Request'}
+                {cancelLoading ? 'Cancelling...' : 'Cancel Request'}
               </button>
             </div>
           </div>

@@ -84,39 +84,37 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-6 animate-fadeIn">
+    <div className="max-w-2xl mx-auto py-4">
       <button
         onClick={onGoBack}
-        className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 mb-6 transition-colors"
+        className="flex items-center gap-1.5 text-xs text-[#787774] hover:text-[#37352F] mb-6 transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" />
+        <ArrowLeft className="w-3.5 h-3.5" />
         <span>Back to Welcome Page</span>
       </button>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400">
-            <BookOpen className="w-6 h-6" />
-          </div>
+      <div className="bg-white border border-[#E9E9E7] rounded-xl p-6 sm:p-8 shadow-xs">
+        <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#E9E9E7]">
+          <div className="text-3xl select-none">📚</div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Register as a Student Learner</h2>
-            <p className="text-xs text-slate-400 mt-1">
+            <h2 className="text-xl font-bold text-[#37352F]">Register as a Student Learner</h2>
+            <p className="text-xs text-[#787774] mt-0.5">
               Connect with senior peer mentors, book 1-on-1 sessions, and achieve your learning goals.
             </p>
           </div>
         </div>
 
         {error && (
-          <div className="mb-6 p-3.5 rounded-xl bg-rose-950/60 border border-rose-800 text-rose-200 text-xs flex items-center justify-between gap-2.5">
-            <div className="flex items-center gap-2.5">
-              <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+          <div className="mb-5 p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
               <span>{error}</span>
             </div>
             {error.includes('already exists') && (
               <button
                 type="button"
                 onClick={onGoToLogin}
-                className="shrink-0 px-2.5 py-1 bg-rose-800 hover:bg-rose-700 text-white rounded-lg font-medium transition-colors"
+                className="shrink-0 px-2.5 py-1 bg-rose-700 hover:bg-rose-800 text-white rounded font-medium transition-colors text-[11px]"
               >
                 Go to Log In
               </button>
@@ -126,11 +124,11 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           {/* Full Name & Email */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-teal-400" />
-                <span>Full Name</span> <span className="text-rose-400">*</span>
+              <label className="block text-[#37352F] font-medium mb-1 flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5 text-[#787774]" />
+                <span>Full Name</span> <span className="text-rose-500">*</span>
               </label>
               <input
                 type="text"
@@ -138,13 +136,13 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="E.g., Enter your full name"
                 required
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-teal-400" />
-                <span>College Email Address</span> <span className="text-rose-400">*</span>
+              <label className="block text-[#37352F] font-medium mb-1 flex items-center gap-1.5">
+                <Mail className="w-3.5 h-3.5 text-[#787774]" />
+                <span>College Email Address</span> <span className="text-rose-500">*</span>
               </label>
               <input
                 type="email"
@@ -152,17 +150,17 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="E.g., student.name@kiet.edu"
                 required
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               />
             </div>
           </div>
 
           {/* College and Student ID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
-                <Building className="w-3.5 h-3.5 text-teal-400" />
-                <span>College / Institution</span> <span className="text-rose-400">*</span>
+              <label className="block text-[#37352F] font-medium mb-1 flex items-center gap-1.5">
+                <Building className="w-3.5 h-3.5 text-[#787774]" />
+                <span>College / Institution</span> <span className="text-rose-500">*</span>
               </label>
               <input
                 type="text"
@@ -170,11 +168,11 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
                 onChange={(e) => setCollege(e.target.value)}
                 placeholder="E.g., KIET Group of Institutions"
                 required
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">
+              <label className="block text-[#37352F] font-medium mb-1">
                 Student ID / Enrollment No.
               </label>
               <input
@@ -182,22 +180,22 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
                 value={studentId}
                 onChange={(e) => setStudentId(e.target.value)}
                 placeholder="E.g., 2300970100012"
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               />
             </div>
           </div>
 
           {/* Course, Branch & Year */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
-                <GraduationCap className="w-3.5 h-3.5 text-teal-400" />
-                <span>Course</span> <span className="text-rose-400">*</span>
+              <label className="block text-[#37352F] font-medium mb-1 flex items-center gap-1.5">
+                <GraduationCap className="w-3.5 h-3.5 text-[#787774]" />
+                <span>Course</span> <span className="text-rose-500">*</span>
               </label>
               <select
                 value={course}
                 onChange={(e) => setCourse(e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               >
                 <option value="B.Tech">B.Tech</option>
                 <option value="B.Sc">B.Sc</option>
@@ -208,8 +206,8 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
               </select>
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">
-                Branch / Specialization <span className="text-rose-400">*</span>
+              <label className="block text-[#37352F] font-medium mb-1">
+                Branch / Specialization <span className="text-rose-500">*</span>
               </label>
               <input
                 type="text"
@@ -217,17 +215,17 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
                 onChange={(e) => setBranch(e.target.value)}
                 placeholder="E.g., Computer Science"
                 required
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1">
-                Current Year of Study <span className="text-rose-400">*</span>
+              <label className="block text-[#37352F] font-medium mb-1">
+                Current Year of Study <span className="text-rose-500">*</span>
               </label>
               <select
                 value={yearOfStudy}
                 onChange={(e) => setYearOfStudy(Number(e.target.value))}
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               >
                 <option value={1}>1st Year (Freshman)</option>
                 <option value={2}>2nd Year (Sophomore)</option>
@@ -238,11 +236,11 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
           </div>
 
           {/* Passwords */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5 text-teal-400" />
-                <span>Password</span> <span className="text-rose-400">*</span>
+              <label className="block text-[#37352F] font-medium mb-1 flex items-center gap-1.5">
+                <Lock className="w-3.5 h-3.5 text-[#787774]" />
+                <span>Password</span> <span className="text-rose-500">*</span>
               </label>
               <input
                 type="password"
@@ -250,13 +248,13 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Min. 6 characters"
                 required
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5 text-teal-400" />
-                <span>Confirm Password</span> <span className="text-rose-400">*</span>
+              <label className="block text-[#37352F] font-medium mb-1 flex items-center gap-1.5">
+                <Lock className="w-3.5 h-3.5 text-[#787774]" />
+                <span>Confirm Password</span> <span className="text-rose-500">*</span>
               </label>
               <input
                 type="password"
@@ -264,14 +262,14 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Re-enter password"
                 required
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+                className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
               />
             </div>
           </div>
 
           {/* Skills wanted */}
           <div>
-            <label className="block text-slate-300 font-medium mb-1">
+            <label className="block text-[#37352F] font-medium mb-1">
               Skills You Want to Learn (Comma-separated, Optional)
             </label>
             <input
@@ -279,13 +277,13 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
               value={skillsWanted}
               onChange={(e) => setSkillsWanted(e.target.value)}
               placeholder="E.g., Data Structures, React, Python, Public Speaking"
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+              className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
             />
           </div>
 
           {/* Bio */}
           <div>
-            <label className="block text-slate-300 font-medium mb-1">
+            <label className="block text-[#37352F] font-medium mb-1">
               Short Bio (Optional)
             </label>
             <textarea
@@ -293,7 +291,7 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
               value={bio}
               onChange={(e) => setBio(e.target.value)}
               placeholder="Tell mentors a little about your academic interests and projects..."
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+              className="w-full bg-[#FAF9F6] border border-[#D3D1CB] rounded-md p-2.5 text-xs text-[#37352F] focus:outline-none focus:bg-white focus:border-[#37352F]"
             />
           </div>
 
@@ -306,22 +304,22 @@ export const LearnerRegisterPage: React.FC<LearnerRegisterPageProps> = ({ onSucc
             helperText="Upload your campus photo, select a student preset, or paste a direct image URL"
           />
 
-          <div className="pt-4">
+          <div className="pt-2">
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm shadow-lg shadow-teal-700/20 transition-all disabled:opacity-50"
+              className="w-full py-2.5 rounded-md bg-[#2F2E2A] hover:bg-[#45433E] text-white font-medium text-xs shadow-xs transition-colors disabled:opacity-50"
             >
               {loading ? 'Creating Learner Account...' : 'Complete Learner Registration'}
             </button>
           </div>
 
-          <div className="text-center pt-2 text-slate-400">
+          <div className="text-center pt-2 text-[#787774]">
             Already have an account?{' '}
             <button
               type="button"
               onClick={onGoToLogin}
-              className="text-teal-400 hover:underline font-semibold"
+              className="text-[#37352F] hover:underline font-semibold"
             >
               Log in
             </button>

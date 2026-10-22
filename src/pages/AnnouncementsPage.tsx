@@ -36,46 +36,46 @@ export const AnnouncementsPage: React.FC = () => {
   const getCategoryColor = (cat: string) => {
     switch (cat) {
       case 'Hackathon':
-        return 'bg-purple-950 text-purple-300 border-purple-800';
+        return 'bg-[#F6F3F9] text-[#6941C6] border-[#E4DCF5]';
       case 'Workshop':
-        return 'bg-teal-950 text-teal-300 border-teal-800';
+        return 'bg-[#EDF3EC] text-[#2B6E38] border-[#D3E5D2]';
       case 'Academic':
-        return 'bg-amber-950 text-amber-300 border-amber-800';
+        return 'bg-[#FAF3DD] text-[#8F6B00] border-[#F3E7BE]';
       case 'Cultural':
-        return 'bg-pink-950 text-pink-300 border-pink-800';
+        return 'bg-[#FAF1F5] text-[#C13875] border-[#F7D8E7]';
       default:
-        return 'bg-slate-800 text-slate-300 border-slate-700';
+        return 'bg-[#F1F1EF] text-[#787774] border-[#E9E9E7]';
     }
   };
 
   return (
-    <div className="space-y-8 animate-fadeIn pb-16">
+    <div className="space-y-6 animate-fadeIn pb-16">
       {/* Header */}
-      <div className="space-y-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold">
-          <Bell className="w-3.5 h-3.5 text-amber-400" />
+      <div className="space-y-1.5">
+        <div className="inline-flex items-center gap-1.5 text-xs text-[#787774] font-medium">
+          <Bell className="w-3.5 h-3.5 text-[#37352F]" />
           <span>Official Campus Circulars & Events</span>
         </div>
-        <h1 className="text-3xl font-extrabold text-white">Announcements & Campus Events</h1>
-        <p className="text-sm text-slate-400 max-w-2xl leading-relaxed">
+        <h1 className="text-2xl font-bold text-[#37352F]">Announcements & Campus Events</h1>
+        <p className="text-xs text-[#787774] max-w-2xl leading-relaxed">
           Stay informed about upcoming national hackathons, peer skill workshops, faculty seminars, and campus society recruitment drives.
         </p>
       </div>
 
       {/* Filter Tabs */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center gap-2 text-xs">
-        <span className="text-slate-400 font-medium mr-2 flex items-center gap-1.5">
-          <Filter className="w-3.5 h-3.5 text-teal-400" />
+      <div className="bg-white border border-[#E9E9E7] rounded-lg p-3 flex flex-wrap items-center gap-1.5 text-xs shadow-xs">
+        <span className="text-[#787774] font-medium mr-2 flex items-center gap-1">
+          <Filter className="w-3 h-3 text-[#9B9A97]" />
           Category Filter:
         </span>
         {['All', 'Hackathon', 'Workshop', 'Academic', 'Cultural', 'Sports', 'General'].map((cat) => (
           <button
             key={cat}
             onClick={() => setCategory(cat)}
-            className={`px-3 py-1.5 rounded-lg font-medium border transition-colors ${
+            className={`px-2.5 py-0.5 rounded text-[11px] font-medium border transition-colors ${
               category === cat
-                ? 'bg-teal-600 text-white border-teal-500 shadow-sm'
-                : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-800 hover:text-white'
+                ? 'bg-[#2F2E2A] text-white border-[#2F2E2A]'
+                : 'bg-[#F1F1EF] text-[#787774] border-[#E9E9E7] hover:bg-[#EAE9E6] hover:text-[#37352F]'
             }`}
           >
             {cat}
@@ -85,36 +85,36 @@ export const AnnouncementsPage: React.FC = () => {
 
       {/* Announcements List */}
       {loading ? (
-        <div className="text-center py-16 text-slate-400 text-xs">
-          Loading announcements from SQLite database...
+        <div className="text-center py-16 text-[#787774] text-xs">
+          Loading announcements...
         </div>
       ) : announcements.length === 0 ? (
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-xs text-slate-400">
-          <Bell className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-          <p className="text-sm text-slate-300 font-semibold">No announcements in this category.</p>
+        <div className="bg-white border border-[#E9E9E7] rounded-lg p-10 text-center text-xs text-[#787774]">
+          <Bell className="w-8 h-8 text-[#9B9A97] mx-auto mb-2" />
+          <p className="text-sm text-[#37352F] font-semibold">No announcements in this category.</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {announcements.map((item) => (
             <div
               key={item.id}
-              className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm hover:border-slate-700 transition-colors"
+              className="bg-white border border-[#E9E9E7] rounded-lg p-5 shadow-xs hover:border-[#D3D1CB] transition-all"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-3">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-2.5">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <span
-                      className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md border ${getCategoryColor(
+                      className={`text-[10px] uppercase font-semibold tracking-wider px-1.5 py-0.2 rounded border ${getCategoryColor(
                         item.category
                       )}`}
                     >
                       {item.category}
                     </span>
-                    <span className="text-slate-500 text-[11px]">
+                    <span className="text-[#9B9A97] text-[11px]">
                       Published: {new Date(item.published_at).toLocaleDateString()}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                  <h3 className="text-base font-bold text-[#37352F]">{item.title}</h3>
                 </div>
 
                 {item.registration_url && item.registration_url !== '#' && (
@@ -122,33 +122,33 @@ export const AnnouncementsPage: React.FC = () => {
                     href={item.registration_url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold shrink-0 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#2F2E2A] hover:bg-[#191918] text-white text-xs font-medium shrink-0 transition-colors"
                   >
-                    <span>Register Now</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Register</span>
+                    <ExternalLink className="w-3 h-3" />
                   </a>
                 )}
               </div>
 
-              <p className="text-xs text-slate-300 leading-relaxed mb-4">
+              <p className="text-xs text-[#787774] leading-relaxed mb-3">
                 {item.description}
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-slate-800/80 text-[11px] text-slate-400">
+              <div className="flex flex-wrap items-center gap-4 pt-2.5 border-t border-[#E9E9E7] text-[11px] text-[#787774]">
                 <div className="flex items-center gap-1.5">
-                  <Building className="w-3.5 h-3.5 text-teal-400" />
-                  <span>Organizer: <strong className="text-slate-300">{item.organizer}</strong></span>
+                  <Building className="w-3 h-3 text-[#9B9A97]" />
+                  <span>Organizer: <strong className="text-[#37352F]">{item.organizer}</strong></span>
                 </div>
                 {item.event_date && (
                   <div className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Event Date: <strong className="text-slate-300">{item.event_date}</strong></span>
+                    <Calendar className="w-3 h-3 text-[#9B9A97]" />
+                    <span>Event Date: <strong className="text-[#37352F]">{item.event_date}</strong></span>
                   </div>
                 )}
                 {item.venue && (
                   <div className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-rose-400" />
-                    <span>Venue: <strong className="text-slate-300">{item.venue}</strong></span>
+                    <MapPin className="w-3 h-3 text-[#9B9A97]" />
+                    <span>Venue: <strong className="text-[#37352F]">{item.venue}</strong></span>
                   </div>
                 )}
               </div>

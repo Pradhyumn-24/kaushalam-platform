@@ -66,27 +66,24 @@ export const SetupInstructionsPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-10 animate-fadeIn pb-16 max-w-4xl mx-auto">
+    <div className="space-y-8 pb-16 max-w-4xl mx-auto">
       {/* Header */}
-      <div className="space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-teal-300 text-xs font-semibold">
-          <Terminal className="w-3.5 h-3.5 text-teal-400" />
-          <span>Local Development & College Evaluation Guide</span>
-        </div>
-        <h1 className="text-3xl font-extrabold text-white">Windows PowerShell Setup & Testing</h1>
-        <p className="text-sm text-slate-400 leading-relaxed">
-          Step-by-step instructions to run the Python Flask backend with SQLAlchemy SQLite, run automated tests, configure Gmail SMTP credentials, and launch the Vite frontend.
+      <div className="space-y-2 pt-2">
+        <div className="text-4xl select-none mb-1">⚙️</div>
+        <h1 className="text-3xl font-bold text-[#37352F]">Setup & Local Execution Guide</h1>
+        <p className="text-sm text-[#787774] max-w-2xl leading-relaxed">
+          Step-by-step instructions to run the active TypeScript/Node backend or Python environment, run automated tests, and launch the Vite development server.
         </p>
       </div>
 
       {/* Feature Readiness Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-slate-900 border border-emerald-900/40 rounded-2xl p-5 space-y-2">
-          <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+        <div className="bg-white border border-[#E9E9E7] rounded-xl p-5 space-y-2 shadow-xs">
+          <div className="flex items-center gap-2 text-emerald-700 font-bold text-sm">
             <CheckCircle className="w-4 h-4" />
             <span>Works Immediately (Zero External Setup Required)</span>
           </div>
-          <ul className="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+          <ul className="text-xs text-[#787774] space-y-1.5 list-disc list-inside">
             <li>Learner & Teacher registration and login</li>
             <li>Bcrypt password hashing and JWT session tokens</li>
             <li>Role-based dashboards & permission guards</li>
@@ -98,45 +95,45 @@ export const SetupInstructionsPage: React.FC = () => {
           </ul>
         </div>
 
-        <div className="bg-slate-900 border border-amber-900/40 rounded-2xl p-5 space-y-2">
-          <div className="flex items-center gap-2 text-amber-400 font-bold text-sm">
+        <div className="bg-white border border-[#E9E9E7] rounded-xl p-5 space-y-2 shadow-xs">
+          <div className="flex items-center gap-2 text-amber-800 font-bold text-sm">
             <Mail className="w-4 h-4" />
             <span>Requires Configurable SMTP Credentials</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed">
-            Direct inbox email delivery requires setting up Gmail App Password or college SMTP in <code className="text-amber-300">.env</code>.
+          <p className="text-xs text-[#787774] leading-relaxed">
+            Direct inbox email delivery requires setting up Gmail App Password or college SMTP in <code className="text-[#37352F] font-mono">.env</code>.
           </p>
-          <div className="text-[11px] text-slate-400 bg-slate-950 p-2.5 rounded-xl border border-slate-800 leading-relaxed">
-            <strong className="text-slate-200">How to get Gmail App Password:</strong>
-            <ol className="list-decimal list-inside mt-1 space-y-1 text-slate-400">
+          <div className="text-[11px] text-[#787774] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#E9E9E7] leading-relaxed">
+            <strong className="text-[#37352F]">How to get Gmail App Password:</strong>
+            <ol className="list-decimal list-inside mt-1 space-y-1 text-[#787774]">
               <li>Turn on 2-Step Verification in Google Account.</li>
-              <li>Go to <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noreferrer" className="text-teal-400 underline">myaccount.google.com/apppasswords</a>.</li>
+              <li>Go to <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noreferrer" className="text-[#37352F] underline font-medium">myaccount.google.com/apppasswords</a>.</li>
               <li>Generate an App Password named "Kaushalam".</li>
-              <li>Copy the 16-character code into <code className="text-amber-300">MAIL_PASSWORD</code>.</li>
+              <li>Copy the 16-character code into <code className="text-[#37352F] font-mono">MAIL_PASSWORD</code>.</li>
             </ol>
           </div>
         </div>
       </div>
 
       {/* Step by Step Execution Instructions */}
-      <div className="space-y-6">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
-          <PlayCircle className="w-5 h-5 text-teal-400" />
+      <div className="space-y-4">
+        <h2 className="text-lg font-bold text-[#37352F] flex items-center gap-2">
+          <PlayCircle className="w-4 h-4 text-[#787774]" />
           <span>Execution Commands</span>
         </h2>
 
         {steps.map((step, idx) => (
-          <div key={idx} className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-3">
+          <div key={idx} className="bg-white border border-[#E9E9E7] rounded-xl p-5 shadow-xs space-y-2.5">
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-slate-100 text-sm">{step.title}</h3>
+              <h3 className="font-semibold text-[#37352F] text-sm">{step.title}</h3>
               <button
                 onClick={() => copyToClipboard(step.code, idx)}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs transition-colors"
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FAF9F6] hover:bg-[#F1F1EF] text-[#787774] hover:text-[#37352F] text-xs transition-colors border border-[#E9E9E7]"
               >
                 {copiedIndex === idx ? (
                   <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400">Copied!</span>
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="text-emerald-700 font-medium">Copied!</span>
                   </>
                 ) : (
                   <>
@@ -147,9 +144,9 @@ export const SetupInstructionsPage: React.FC = () => {
               </button>
             </div>
 
-            <p className="text-xs text-slate-400">{step.description}</p>
+            <p className="text-xs text-[#787774]">{step.description}</p>
 
-            <div className="bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono text-xs text-teal-300 whitespace-pre-wrap leading-relaxed overflow-x-auto">
+            <div className="bg-[#FAF9F6] rounded-lg p-3.5 border border-[#E9E9E7] font-mono text-xs text-[#37352F] whitespace-pre-wrap leading-relaxed overflow-x-auto">
               {step.code}
             </div>
           </div>

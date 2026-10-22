@@ -43,52 +43,52 @@ export const LoginPage: React.FC<LoginPageProps> = ({
   };
 
   return (
-    <div className="max-w-md mx-auto py-10 animate-fadeIn">
+    <div className="max-w-sm mx-auto py-10 animate-fadeIn">
       <button
         onClick={onGoBack}
-        className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 mb-6 transition-colors"
+        className="flex items-center gap-1.5 text-xs text-[#787774] hover:text-[#37352F] mb-6 transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" />
-        <span>Back to Welcome Page</span>
+        <ArrowLeft className="w-3.5 h-3.5" />
+        <span>Back</span>
       </button>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl">
+      <div className="bg-white border border-[#E9E9E7] rounded-xl p-6 sm:p-8 shadow-xs">
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 mx-auto mb-3">
-            <LogIn className="w-6 h-6" />
+          <div className="w-9 h-9 rounded-md bg-[#F1F1EF] border border-[#E9E9E7] flex items-center justify-center text-[#37352F] mx-auto mb-3">
+            <LogIn className="w-4 h-4" />
           </div>
-          <h2 className="text-2xl font-bold text-white">Log in to Kaushalam</h2>
-          <p className="text-xs text-slate-400 mt-1">
-            Access your personalized Learner or Teacher campus dashboard.
+          <h2 className="text-xl font-bold text-[#37352F]">Log in to Kaushalam</h2>
+          <p className="text-xs text-[#787774] mt-1">
+            Access your campus learning dashboard
           </p>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 rounded-lg bg-rose-950/60 border border-rose-800 text-rose-200 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+          <div className="mb-4 p-2.5 rounded-md bg-[#FDEBEC] border border-[#F5C2C7] text-[#EB5757] text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 text-[#EB5757] shrink-0" />
             <span>{error}</span>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           <div>
-            <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-teal-400" />
+            <label className="block text-[#37352F] font-medium mb-1 flex items-center gap-1.5">
+              <Mail className="w-3.5 h-3.5 text-[#787774]" />
               <span>Registered College Email</span>
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="E.g., aarav.sharma@kiet.edu"
+              placeholder="e.g. name@kiet.edu"
               required
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+              className="w-full bg-white border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] placeholder-[#9B9A97] focus:outline-none focus:border-[#2383E2] focus:ring-1 focus:ring-[#2383E2] transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-slate-300 font-medium mb-1 flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-teal-400" />
+            <label className="block text-[#37352F] font-medium mb-1 flex items-center gap-1.5">
+              <Lock className="w-3.5 h-3.5 text-[#787774]" />
               <span>Password</span>
             </label>
             <input
@@ -97,34 +97,34 @@ export const LoginPage: React.FC<LoginPageProps> = ({
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Your password"
               required
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-slate-200 focus:outline-none focus:border-teal-500"
+              className="w-full bg-white border border-[#D3D1CB] rounded-md px-3 py-2 text-xs text-[#37352F] placeholder-[#9B9A97] focus:outline-none focus:border-[#2383E2] focus:ring-1 focus:ring-[#2383E2] transition-colors"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs shadow-md shadow-teal-700/20 transition-all disabled:opacity-50"
+            className="w-full py-2 rounded-md bg-[#2F2E2A] hover:bg-[#191918] text-white font-medium text-xs transition-colors disabled:opacity-50"
           >
-            {loading ? 'Authenticating...' : 'Log In'}
+            {loading ? 'Logging in...' : 'Continue'}
           </button>
         </form>
 
-        <div className="pt-6 mt-6 border-t border-slate-800 text-center space-y-2 text-xs text-slate-400">
+        <div className="pt-5 mt-5 border-t border-[#E9E9E7] text-center space-y-2 text-xs text-[#787774]">
           <p>Don't have an account yet?</p>
           <div className="flex items-center justify-center gap-3">
             <button
               onClick={onGoToRegisterLearner}
-              className="text-teal-400 hover:underline font-semibold"
+              className="text-[#37352F] hover:underline font-medium"
             >
-              Register as Learner
+              Sign up as Learner
             </button>
-            <span className="text-slate-600">·</span>
+            <span className="text-[#D3D1CB]">·</span>
             <button
               onClick={onGoToRegisterTeacher}
-              className="text-amber-400 hover:underline font-semibold"
+              className="text-[#37352F] hover:underline font-medium"
             >
-              Register as Teacher
+              Sign up as Teacher
             </button>
           </div>
         </div>

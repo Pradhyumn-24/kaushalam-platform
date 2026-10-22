@@ -1,0 +1,8 @@
+{
+  "name": "Kaushalam — Campus Peer Learning & Skill Sharing",
+  "description": "Full-stack campus skill-sharing platform connecting student teachers and learners with session booking, approvals, club directory, announcements, and leaderboards.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
